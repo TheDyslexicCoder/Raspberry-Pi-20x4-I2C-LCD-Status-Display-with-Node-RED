@@ -124,6 +124,8 @@ This node handles the PCF8574 I2C interface to your 20x4 LCD.
 ### Node-RED Flow
 ![Node-RED flow for 20x4 I2C LCD](screenshots/I2C%20LCD%2020x4%20Node-Red%20Flow.png)
 
+---
+
 ### 📟 Configure the LCD node
 
 Open the `LCD-I2C` node and set:
@@ -131,6 +133,15 @@ Open the `LCD-I2C` node and set:
 - Variant: `PCF8574`
 - Size: `20x4`
 - Address: your detected address from `i2cdetect` (example: `0x27`)
+
+### 🧯 Error Handling (Catch Node + LCD Errors)
+
+This flow includes a **Catch** node wired to a **Debug** node so you can see runtime issues (I2C hiccups, bad payloads, misconfiguration, etc.) without guessing.
+
+- **Catch** captures runtime errors from the flow (especially the `LCD-I2C` node).
+- **Debug: `LCD errors`** prints them in the Debug sidebar.
+
+**If `LCD errors` shows nothing:** open the Catch node and set scope to **All nodes** (or select `LCD-I2C`), then **Deploy**.
 
 4. Click `Deploy`.
 ---
